@@ -5,6 +5,8 @@
   font-family: "Poppins", sans-serif;
 }
 
+
+
 body {
   display: flex;
   width: 100vw;
@@ -72,6 +74,7 @@ body {
   background: white;
   border: 2px solid black;
   color: #188aec;
+  cursor: pointer;
 }
 
 /* blue */
