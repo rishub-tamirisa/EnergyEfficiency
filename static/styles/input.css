@@ -28,9 +28,9 @@ h1{
 
 /* form */
 .form-container{
-    padding: 30px;
+    padding: 20px;
     width: 647px;
-    height: 600px;
+    height: 610px;
     border: 2px dashed #188AEC;
     box-sizing: border-box;
     border-radius: 5px;
@@ -58,7 +58,7 @@ h1{
     border: none;
     background: #F9F9FA;
     box-shadow: inset 0px -1px 0px #334155;
-    /* Inside auto layout */
+
     flex: none;
     order: 1;
     flex-grow: 0;
@@ -68,7 +68,7 @@ h1{
     outline: none;
     left: 1rem;
     padding-left: 0.5rem;
-}
+} 
 input[type=number] {
     -moz-appearance:textfield;
 }
@@ -93,7 +93,7 @@ input[type=number] {
     margin: 12px 0px;
 }
 
-button{
+.button{
     width: 98.7%;
     background: #188AEC;
     border-radius: 4px;
@@ -103,7 +103,7 @@ button{
     height: 41px;
 }
 
-button:hover{
+.button:hover{
     cursor: pointer;
 }
 

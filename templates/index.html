@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="front.css">
+    <!-- <link rel="stylesheet" href="front.css"> -->
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/front.css') }}">
     <title>Welcome!</title>
 </head>
 <body>
     <main class="container">
         <div class="navbar">
             <div class="icon">
-                <img src="../img/logo.png" alt="">
+                <img src="{{ url_for('static',filename='img/logo.png') }}" alt="">
             </div>
             <div class="icon-text">
                 <h2>Logo</h2>
@@ -21,14 +22,14 @@
             <div class="section-items">
                 <div class="intros-button">
                     <h1>Energy Efficiency Application</h1>
-                    <button class="calculate">Calculate</button>
+                   <a href="/input"><button class="calculate">Calculate</button></a>
                 </div>
             </div>
         </div>
     </main>
     <div class="color-blue">
         <div class="intro-img">
-            <img src="../img/analytics.png" alt="">
+            <img src="{{ url_for('static',filename='img/analytics.png') }}" alt="">
         </div>
     </div>
 </body>

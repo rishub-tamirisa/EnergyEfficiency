@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="input.css">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/input.css') }}">
+    <link rel="stylesheet" href="../static/styles/input.css">
     <title>Input</title>
 </head>
 <body>
@@ -12,7 +13,7 @@
         <h1>Input Building Requirements</h1>
         <div class="container">
             <div class="form-container">
-                <div class="form">
+                <form action="#" method="post" class="form">
                     <div class="input">
                         <label for="relative-compactness">Relative Compactness</label>
                         <input type="number" id="relative-compactness" name="relative-compactness">
@@ -45,11 +46,12 @@
                         <label for="glazing-area-distribution">Glazing Area Distribution</label>
                         <input type="number" id="glazing-area-distribution" name="glazing-area-distribution">
                     </div>
-                </div>
-                <button>Submit</button>
+                    <input class="button" type="submit" value="submit">
+                </form>
+                
             </div>
             <div class="tower">
-                <img src="../img/building-cartoon-architecture-png-favpng-NsMewQ2nBTEddfYVAFaSUCVva.png" alt="">
+                <img src="{{ url_for('static',filename='img/building.png') }}" alt="">
             </div>
         </div>
     </main>
