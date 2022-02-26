@@ -78,7 +78,7 @@ def get_plots():
             
         )
 
-        # fig.show()
+        fig.show()
 
         html_plots.append(plot(fig, include_plotlyjs=True, output_type='div'))
     return html_plots
