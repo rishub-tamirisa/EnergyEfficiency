@@ -1,3 +1,4 @@
+from turtle import color
 from matplotlib.axis import YAxis
 import data
 from numpy import *
@@ -45,8 +46,10 @@ def get_plots():
         figure1_traces = []
         figure2_traces = []
         for trace in range(len(heating["data"])):
+            heating["data"][trace]['marker']['color'] = '#ff295e'
             figure1_traces.append(heating["data"][trace])
         for trace in range(len(cooling["data"])):
+            cooling["data"][trace]['marker']['color'] = '#009dff' 
             figure2_traces.append(cooling["data"][trace])
 
         #Create a 1x2 subplot
@@ -56,15 +59,16 @@ def get_plots():
         fig['layout']['yaxis']['title']='Heating Efficiency'
         fig['layout']['yaxis2']['title']='Cooling Efficiency'
         # Get the Express fig broken down as traces and add the traces to the proper plot within in the subplot
+        
         for traces in figure1_traces:
             fig.append_trace(traces, row=1, col=1)
+        
         for traces in figure2_traces:
             fig.append_trace(traces, row=1, col=2)
 
         fig.update_traces(marker=dict(size=5,
                                     opacity=0.5,
-                                line=dict(width=0,
-                                            color='yellow')),
+                                ),
                     selector=dict(mode='markers'))
         
         fig.update_layout(
@@ -74,9 +78,9 @@ def get_plots():
             
         )
 
-        fig.show()
+        # fig.show()
 
-        html_plots.append(plot(fig, include_plotlyjs=False, output_type='div'))
+        html_plots.append(plot(fig, include_plotlyjs=True, output_type='div'))
     return html_plots
 # print(len(get_plots()))
 get_plots()
