@@ -1,0 +1,114 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap");
+* {
+  border: border-box;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+h1{
+    text-align: center;
+    margin-top: 30px;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+    width: 100vw;
+}
+
+
+
+/* form */
+.form-container{
+    padding: 30px;
+    width: 647px;
+    height: 600px;
+    border: 2px dashed #188AEC;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.form{
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+
+
+}
+.input{
+    display: flex;
+    flex-direction: column;
+}
+.input input{
+    padding: 0px 12px 6px 0px;
+
+    position: static;
+    width: 260px;
+    height: 34px;
+    left: 0px;
+    top: 40px;
+    border: none;
+    background: #F9F9FA;
+    box-shadow: inset 0px -1px 0px #334155;
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 12px 0px;
+    font-family: inherit;
+    font-size: inherit;
+    outline: none;
+    left: 1rem;
+    padding-left: 0.5rem;
+}
+input[type=number] {
+    -moz-appearance:textfield;
+}
+
+.input label {
+    font-size: 16px;
+    line-height: 175%;
+    /* identical to box height, or 28px */
+
+    font-feature-settings: 'pnum' on, 'lnum' on, 'ss03' on, 'liga' off;
+
+    /* Blue Gray / 500 */
+
+    color: #64748B;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 12px 0px;
+}
+
+button{
+    width: 98.7%;
+    background: #188AEC;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    height: 41px;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+
+.tower img {
+    width: 319.95px;
+    height: 544.9px;
+}
