@@ -1,5 +1,5 @@
 from flask import Flask, redirect, url_for, render_template, request, flash
-from bs4 import BeautifulSoup
+# from bs4 import BeautifulSoup
 
 import validate
 import analysis
