@@ -1,0 +1,11 @@
+*{
+    margin: 0;
+    border: border-box;
+}
+
+.all--graphs{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+}
