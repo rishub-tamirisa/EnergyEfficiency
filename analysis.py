@@ -26,7 +26,7 @@ labels = ['Relative Compactness',
         'Orientation',
         'Glazing Area',
         'Glazing Area Distribution']
-        
+
 vars = ['X1', 'X2', 'X3', 'X4', 'X5', 'X6', 'X7', 'X8']
 yvars = ['Y1', 'Y2']
 
@@ -49,20 +49,20 @@ def get_plots():
             heating["data"][trace]['marker']['color'] = '#ff295e'
             figure1_traces.append(heating["data"][trace])
         for trace in range(len(cooling["data"])):
-            cooling["data"][trace]['marker']['color'] = '#009dff' 
+            cooling["data"][trace]['marker']['color'] = '#009dff'
             figure2_traces.append(cooling["data"][trace])
 
         #Create a 1x2 subplot
-        fig = sp.make_subplots(rows=1, cols=2,  subplot_titles=(labels[i] + ' Effect on Heating Efficiency',  labels[i] + ' Effect on Cooling Efficiency')) 
+        fig = sp.make_subplots(rows=1, cols=2,  subplot_titles=(labels[i] + ' Effect on Heating Efficiency',  labels[i] + ' Effect on Cooling Efficiency'))
         fig['layout']['xaxis']['title']=labels[i]
         fig['layout']['xaxis2']['title']=labels[i]
         fig['layout']['yaxis']['title']='Heating Efficiency'
         fig['layout']['yaxis2']['title']='Cooling Efficiency'
         # Get the Express fig broken down as traces and add the traces to the proper plot within in the subplot
-        
+
         for traces in figure1_traces:
             fig.append_trace(traces, row=1, col=1)
-        
+
         for traces in figure2_traces:
             fig.append_trace(traces, row=1, col=2)
 
@@ -70,12 +70,12 @@ def get_plots():
                                     opacity=0.5,
                                 ),
                     selector=dict(mode='markers'))
-        
+
         fig.update_layout(
             autosize=True,
             width=1000,
             height=500,
-            
+
         )
 
         fig.show()
