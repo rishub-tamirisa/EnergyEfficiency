@@ -1,4 +1,3 @@
-from xml.sax.xmlreader import XMLReader
 import numpy as np
 from pathlib import Path
 from tensorflow.keras.models import Sequential
@@ -7,7 +6,6 @@ from tensorflow.keras.utils import to_categorical
 from tensorflow.keras.optimizers import SGD
 from numpy.random import rand
 from numpy.random import randint
-from tensorflow.keras.layers import Conv2DTranspose, LeakyReLU, BatchNormalization, Activation, Reshape, MaxPool2D
 import tensorflow as tf
 from tensorflow.keras.optimizers import Adam
 
