@@ -17,7 +17,7 @@ input =  DecisionTreeRegressor()
 ml = MultiOutputRegressor(input, n_jobs=-1)
 
 def train_nn():
-    x_train, y_train, x_test, y_test = data.Data.create_data()
+    x_train, y_train, x_test, y_test = data.Data.create_data(train_split=0.5)
     model = net.model(numInputs=8, numOutputs=2)
     model.fit(x_train, y_train, verbose=1, batch_size=20, epochs=200)
     # _, acc = ml.evaluate(x_test, y_test, verbose=1)
@@ -39,7 +39,8 @@ def train():
     for i in range(10):
         print("Fold: %i" %(i))
         # prepare data
-        x_train, x_test, y_train, y_test = train_test_split(x,y,test_size=0.50,random_state=2)
+        x_train, y_train, x_test, y_test = data.Data.create_data(train_split=0.5)
+        # x_train, x_test, y_train, y_test = train_test_split(x,y,test_size=0.50,random_state=2)
         ml.fit(x_train, y_train)
         # evaluate model on test set
         mae = mean_squared_log_error(y_test, ml.predict(x_test))
@@ -56,5 +57,5 @@ results, mae = train()
 print('Score: %.3f (%.3f)' % (np.mean(results), np.std(results)))
 print('EVS: %.3f (%.3f)' % (np.mean(mae), np.std(mae)))
 print("==============================")
-train_nn()
+# train_nn()
 
