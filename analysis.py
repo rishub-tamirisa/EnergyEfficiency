@@ -21,34 +21,7 @@ y = data.Data.y
 vars = ['X1', 'X2', 'X3', 'X4', 'X5', 'X6', 'X7', 'X8']
 yvars = ['Y1', 'Y2']
 
-# print(x[['X1']])
-# print(y[['Y1']])
-# heat = [x[['X1']], y[['Y1']]]
-# cool = [x[['X1']], y[['Y2']]]
-
-# heat = pd.concat(heat, axis=1)
-# cool = pd.concat(cool, axis=1)
-
-# print(result)
-
-
-
-# heating = go.Scatter(
-#     x=x[['X1']], y=y[['Y1']], name='Relative Compactness Effect on Heating Efficiency', yaxis='y2'
-# )
-# fig = go.Figure(data=heating)
-# fig.show()
-# cooling = go.Scatter(
-#     x=x[['X1']], y=y[['Y2']], name='Relative Compactness Effect on Cooling Efficiency', yaxis='y2'
-# )
-
-# fig = make_subplots(specs=[[{"secondary_y": True}]])
-# fig.add_trace(heating)
-# fig.add_trace(cooling,secondary_y=True)
-# # fig['layout'].update(height = 600, width = 800, title = title,xaxis=dict(
-# #       tickangle=-90
-# #     ))
-# fig.show()
+#array containing html for all 8 scatter plots
 html_plots = list()
 
 for id in vars:
