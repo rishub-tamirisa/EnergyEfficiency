@@ -1,20 +1,39 @@
-from tabnanny import verbose
 from tensorflow import keras
 import data
+import pandas as pd
 import numpy as np
 import pickle
 
-# reconstructed_model = keras.models.load_model("classifier")
 
 x = data.Data.x
 y = data.Data.y
 
-# print(x[440:441])
-# print(y[440:441])
+def input (x1, x2, x3, x4, x5, x6, x7, x8):
+    dict = {'X1':[x1],
+            'X2':[x2],
+            'X3':[x3],
+            'X4':[x4],
+            'X5':[x5],
+            'X6':[x6],
+            'X7':[x7],
+            'X8':[x8],
+        }
+    dict = pd.DataFrame(dict)
+    return dict
+
+#true input
+def get_prediction(x1, x2, x3, x4, x5, x6, x7, x8) :
+    user_input = input(x1,x2,x3,x4,x5,x6,x7,x8)
+    with open("model.pkl", "rb") as f:
+        model = pickle.load(f)
+        print(model.predict(user_input))
+
+#testing purposes
+def get_prediction_test(dict: pd.DataFrame) :
+    with open("model.pkl", "rb") as f:
+        model = pickle.load(f)
+        print(model.predict(dict))
 
 
-# print(reconstructed_model.predict(x))
+# get_prediction(x[766:767])
 
-with open("model.pkl", "rb") as f:
-    model = pickle.load(f)
-    print(model.predict(x[458:459]))

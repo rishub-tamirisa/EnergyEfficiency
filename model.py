@@ -30,26 +30,26 @@ def train():
     for train_ix, test_ix in cv.split(x):
         # prepare data
         # x_train, y_train, x_test, y_test = data.Data.create_data()
-        x_train, x_test, y_train, y_test = train_test_split(x,y,test_size=0.33,random_state=2)
+        x_train, x_test, y_train, y_test = train_test_split(x,y,test_size=0.50,random_state=2)
 
         # x_train, x_test = x[train_ix], x[test_ix]
         # y_train, y_test = y[train_ix], y[test_ix]
         #build model
         # model = net.model(numInputs=8, numOutputs=2)
         # fit model
-        print("==================TRAINING=====================")
+        # print("==================TRAINING=====================")
         # model.fit(x_train, y_train, verbose=1, epochs=50)
         # print(x_train)
         # print(y_train)
         ml.fit(x_train, y_train)
 
         # evaluate model on test set
-        print("===================TESTING=====================")
+        # print("===================TESTING=====================")
         # _, acc = ml.evaluate(x_test, y_test, verbose=1)
         acc = ml.score(x_test, y_test)
         # store result
         #print(model.metrics_names)
-        print(acc)
+        # print(acc)
         if (acc > max):
             max = acc
             # ml.save("classifier")
