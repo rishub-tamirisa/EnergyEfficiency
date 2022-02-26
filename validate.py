@@ -29,11 +29,14 @@ def get_prediction(x1, x2, x3, x4, x5, x6, x7, x8) :
         print(model.predict(user_input))
 
 #testing purposes
-def get_prediction_test(dict: pd.DataFrame) :
+def get_prediction_test(dict: pd.DataFrame, i) :
+    print("Actual Values: " + str(y.iloc[[i]]))
+    ml = keras.models.load_model('net_classifier')
+    print("Neural Network Prediction: " + str(ml.predict(dict)))
     with open("model.pkl", "rb") as f:
         model = pickle.load(f)
-        print(model.predict(dict))
+        print("Decision Tree Prediction: " + str(model.predict(dict)))
 
 
-# get_prediction(x[766:767])
+get_prediction_test(x.iloc[[740]], i = 740)
 
