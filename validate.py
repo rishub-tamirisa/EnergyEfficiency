@@ -4,7 +4,6 @@ import pandas as pd
 import numpy as np
 import pickle
 
-
 x = data.Data.x
 y = data.Data.y
 
@@ -26,17 +25,18 @@ def get_prediction(x1, x2, x3, x4, x5, x6, x7, x8) :
     user_input = input(x1,x2,x3,x4,x5,x6,x7,x8)
     with open("model.pkl", "rb") as f:
         model = pickle.load(f)
-        print(model.predict(user_input))
+        # print(model.predict(user_input))
+        return model.predict(user_input)
 
 #testing purposes
-def get_prediction_test(dict: pd.DataFrame, i) :
-    print("Actual Values: " + str(y.iloc[[i]]))
-    ml = keras.models.load_model('net_classifier')
-    print("Neural Network Prediction: " + str(ml.predict(dict)))
-    with open("model.pkl", "rb") as f:
-        model = pickle.load(f)
-        print("Decision Tree Prediction: " + str(model.predict(dict)))
+# def get_prediction_test(dict: pd.DataFrame, i) :
+#     print("Actual Values: " + str(y.iloc[[i]]))
+#     ml = keras.models.load_model('net_classifier')
+#     print("Neural Network Prediction: " + str(ml.predict(dict)))
+#     with open("model.pkl", "rb") as f:
+#         model = pickle.load(f)
+#         print("Decision Tree Prediction: " + str(model.predict(dict)))
 
 
-get_prediction_test(x.iloc[[710]], i = 710)
+# get_prediction_test(x.iloc[[740]], i = 740)
 

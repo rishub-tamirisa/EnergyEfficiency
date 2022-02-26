@@ -16,44 +16,70 @@
                 <form action="#" method="post" class="form">
                     <div class="input">
                         <label for="relative-compactness">Relative Compactness</label>
-                        <input type="number" id="relative-compactness" name="relative-compactness">
+                        <input step="any" type="number" id="relative-compactness" name="relative-compactness">
                     </div>
                     <div class="input">
                         <label for="surface-area">Surface Area</label>
-                        <input type="number" id="surface-area" name="surface-area">
+                        <input step="any" type="number" id="surface-area" name="surface-area">
                     </div>
                     <div class="input">
                         <label for="wall-area">Wall Area</label>
-                        <input type="number" id="wall-area" name="wall-area">
+                        <input step="any" type="number" id="wall-area" name="wall-area">
                     </div>
                     <div class="input">
                         <label for="roof-area">Roof Area</label>
-                        <input type="number" id="roof-area" name="roof-area">
+                        <input step="any" type="number" id="roof-area" name="roof-area">
                     </div>
                     <div class="input">
                         <label for="overall-height">Overall Height</label>
-                        <input type="number" id="overall-height" name="overall-height">
+                        <input step="any" type="number" id="overall-height" name="overall-height">
                     </div>
                     <div class="input">
                         <label for="orientation">Orientation</label>
-                        <input type="number" id="orientation" name="orientation">
+                        <input step="any" type="number" id="orientation" name="orientation">
                     </div>
                     <div class="input">
                         <label for="glazing-area">Glazing Area</label>
-                        <input type="number" id="glazing-area" name="glazing-area">
+                        <input step="any" type="number" id="glazing-area" name="glazing-area">
                     </div>
                     <div class="input">
                         <label for="glazing-area-distribution">Glazing Area Distribution</label>
-                        <input type="number" id="glazing-area-distribution" name="glazing-area-distribution">
+                        <input step="any" type="number" id="glazing-area-distribution" name="glazing-area-distribution">
                     </div>
                     <input class="button" type="submit" value="submit">
                 </form>
-                
+
             </div>
             <div class="tower">
                 <img src="{{ url_for('static',filename='img/building.png') }}" alt="">
             </div>
         </div>
     </main>
+
+    <div class="range">
+        <div class="sliderValue">
+            <span>100</span>
+        </div>
+        <div class="field">
+            <div class="value left">
+                0</div>
+            <input id="range" type="range" min="10" max="200" value="100" steps="1">
+            <div class="value right">
+                200</div>
+        </div>
+    </div>
+    <script>
+        const slideValue = document.querySelector("span");
+        const inputSlider = document.querySelector("#range");
+        inputSlider.oninput = (() => {
+            let value = inputSlider.value;
+            slideValue.textContent = value;
+            slideValue.style.left = (value / 2) + "%";
+            slideValue.classList.add("show");
+        });
+        inputSlider.onblur = (() => {
+            slideValue.classList.remove("show");
+        });
+    </script>
 </body>
 </html>
