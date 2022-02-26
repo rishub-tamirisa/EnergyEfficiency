@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap");
+* {
+  border: border-box;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+  width: 100vw;
+}
+
+.container {
+  width: 70%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+/* navbar */
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: 50px;
+}
+.icon-text {
+  margin-left: 10px;
+}
+.icon-text h1 {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 55px;
+  line-height: 82px;
+  letter-spacing: -0.025em;
+}
+
+/* bodies */
+.items {
+  width: 70%;
+  height: 70%;
+  padding: 200px 0 0 50px;
+}
+.intros-button h1 {
+  width: 612px;
+  height: 163px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 55px;
+  line-height: 82px;
+  letter-spacing: -0.025em;
+}
+.intros-button .calculate {
+  width: 135px;
+  height: 47px;
+  background: #188aec;
+  border-radius: 8.0473px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 17.1676px;
+  line-height: 138.5%;
+  letter-spacing: 0.035em;
+  border: none;
+  color: white;
+  margin-top: 56px;
+  transition: all 0.5s ease-in-out;
+}
+
+.intros-button .calculate:hover {
+  background: white;
+  border: 2px solid black;
+  color: #188aec;
+}
+
+/* blue */
+
+.color-blue {
+  width: 30%;
+  background: #188aec;
+}
+.intro-img {
+  position: relative;
+  margin-top: 200px;
+}
+.intro-img img {
+  position: absolute;
+  width: 441px;
+  height: 441px;
+  left: -30%;
+}
