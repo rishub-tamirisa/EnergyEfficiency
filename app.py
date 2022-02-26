@@ -12,7 +12,7 @@ def index():
 @app.route('/input', methods=['POST', 'GET'])
 def input():
     if request.method == "POST":
-        rc = float(request.form["relative-compactness"])
+        rc = float(request.form["relative-compactness"]) / 100
         sa = float(request.form["surface-area"])
         wa = float(request.form["wall-area"])
         ra = float(request.form["roof-area"])
@@ -21,7 +21,8 @@ def input():
         ga = float(request.form["glazing-area"])
         gad = float(request.form["glazing-area-distribution"])
 
-        result_heating = validate.get_prediction(rc, sa, wa, ra, oh, ori, ga, gad)
+        # result_heating = validate.get_prediction(rc, sa, wa, ra, oh, ori, ga, gad)
+        result_heating = rc
 
         return redirect(url_for("user", usr=result_heating))
     else:

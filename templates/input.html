@@ -16,8 +16,23 @@
                 <form action="#" method="post" class="form">
                     <div class="input">
                         <label for="relative-compactness">Relative Compactness</label>
-                        <input step="any" type="number" id="relative-compactness" name="relative-compactness">
+                        <!-- <input step="any" type="number" id="relative-compactness" name="relative-compactness"> -->
+                        <div class="range">
+                            <div class="sliderValue">
+                                <span>100</span>
+                            </div>
+                            <div class="field">
+                                <div class="value left">
+                                    60%
+                                </div>
+                                <input id="range" type="range" min="60" max="99" value="0" steps="1" name="relative-compactness">
+                                <div class="value right">
+                                    99%
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
                     <div class="input">
                         <label for="surface-area">Surface Area</label>
                         <input step="any" type="number" id="surface-area" name="surface-area">
@@ -27,20 +42,20 @@
                         <input step="any" type="number" id="wall-area" name="wall-area">
                     </div>
                     <div class="input">
-                        <label for="roof-area">Roof Area</label>
-                        <input step="any" type="number" id="roof-area" name="roof-area">
+                        <label for="roof-area">Roof Area(110 - 220)</label>
+                        <input step="any" type="number" id="roof-area" name="roof-area" min="110" max="220">
                     </div>
                     <div class="input">
                         <label for="overall-height">Overall Height</label>
                         <input step="any" type="number" id="overall-height" name="overall-height">
                     </div>
                     <div class="input">
-                        <label for="orientation">Orientation</label>
+                        <label for="orientation">Orientation(House Facing)</label>
                         <input step="any" type="number" id="orientation" name="orientation">
                     </div>
                     <div class="input">
-                        <label for="glazing-area">Glazing Area</label>
-                        <input step="any" type="number" id="glazing-area" name="glazing-area">
+                        <label for="glazing-area">Glazing Area(0.0 - 0.4)</label>
+                        <input step="any" type="number" id="glazing-area" name="glazing-area" min="0" max="0.4">
                     </div>
                     <div class="input">
                         <label for="glazing-area-distribution">Glazing Area Distribution</label>
@@ -56,25 +71,13 @@
         </div>
     </main>
 
-    <div class="range">
-        <div class="sliderValue">
-            <span>100</span>
-        </div>
-        <div class="field">
-            <div class="value left">
-                0</div>
-            <input id="range" type="range" min="10" max="200" value="100" steps="1">
-            <div class="value right">
-                200</div>
-        </div>
-    </div>
     <script>
         const slideValue = document.querySelector("span");
         const inputSlider = document.querySelector("#range");
         inputSlider.oninput = (() => {
             let value = inputSlider.value;
             slideValue.textContent = value;
-            slideValue.style.left = (value / 2) + "%";
+            // slideValue.style.left = (value) + "%";
             slideValue.classList.add("show");
         });
         inputSlider.onblur = (() => {
