@@ -17,4 +17,4 @@ y = data.Data.y
 
 with open("model.pkl", "rb") as f:
     model = pickle.load(f)
-    print(model.predict(x[450:451]))
+    print(model.predict(x[458:459]))

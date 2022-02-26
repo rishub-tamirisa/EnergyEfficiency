@@ -1,10 +1,11 @@
-from sklearn.tree import DecisionTreeClassifier
+from sklearn.neural_network import MLPRegressor
+from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor
 import network
 import data
 from sklearn.model_selection import RepeatedKFold
 from sklearn.multioutput import MultiOutputClassifier, MultiOutputRegressor
 from sklearn.model_selection import train_test_split
-from sklearn.neighbors import KNeighborsClassifier, KNeighborsRegressor, NearestNeighbors
+from sklearn.neighbors import KNeighborsClassifier, KNeighborsRegressor, NearestNeighbors, RadiusNeighborsRegressor
 import pickle
 
 import numpy as np
@@ -13,7 +14,7 @@ net = network.Network
 # model = network.Network.model(numInputs=8, numOutputs=2)
 # model.build()
 # print(model.summary())
-knn =  KNeighborsRegressor(n_neighbors=3)
+knn =  DecisionTreeRegressor()#KNeighborsRegressor(n_neighbors=1)
 ml = MultiOutputRegressor(knn, n_jobs=-1)
 
 
@@ -28,8 +29,8 @@ def train():
     max = 0
     for train_ix, test_ix in cv.split(x):
         # prepare data
-        x_train, y_train, x_test, y_test = data.Data.create_data()
-        # x_train, x_test, y_train, y_test = train_test_split(x,y,test_size=0.33,random_state=1)
+        # x_train, y_train, x_test, y_test = data.Data.create_data()
+        x_train, x_test, y_train, y_test = train_test_split(x,y,test_size=0.33,random_state=2)
 
         # x_train, x_test = x[train_ix], x[test_ix]
         # y_train, y_test = y[train_ix], y[test_ix]
@@ -38,8 +39,8 @@ def train():
         # fit model
         print("==================TRAINING=====================")
         # model.fit(x_train, y_train, verbose=1, epochs=50)
-        print(x_train)
-        print(y_train)
+        # print(x_train)
+        # print(y_train)
         ml.fit(x_train, y_train)
 
         # evaluate model on test set
@@ -61,4 +62,5 @@ def train():
 
 results = train()
 print(max)
+# print(results)
 print('MAE: %.3f (%.3f)' % (np.mean(results), np.std(results)))
