@@ -49,9 +49,6 @@ def get_plots():
         for trace in range(len(cooling["data"])):
             figure2_traces.append(cooling["data"][trace])
 
-
-
-
         #Create a 1x2 subplot
         fig = sp.make_subplots(rows=1, cols=2,  subplot_titles=(labels[i] + ' Effect on Heating Efficiency',  labels[i] + ' Effect on Cooling Efficiency'))
         fig['layout']['xaxis']['title']=labels[i]
@@ -64,50 +61,21 @@ def get_plots():
         for traces in figure2_traces:
             fig.append_trace(traces, row=1, col=2)
 
-        fig.update_traces(marker=dict(size=12,
+        fig.update_traces(marker=dict(size=5,
                                     opacity=0.5,
                                 line=dict(width=0,
                                             color='yellow')),
                     selector=dict(mode='markers'))
-        # fig.show()
+
+        fig.update_layout(
+            autosize=True,
+            width=1000,
+            height=500,
+
+        )
+
 
         html_plots.append(plot(fig, include_plotlyjs=True, output_type='div'))
     return html_plots
-
-# print(html_plots[1])
-# html_plots = list()
-
-
-
-# buffer = io.StringIO()
-
-# fig = heating
-# fig.write_html(buffer)
-
-# html_bytes = buffer.getvalue().encode()
-# encoded = b64encode(html_bytes).decode()
-
-# graph = dash.Dash(__name__)
-# graph.layout = html.Div([
-#     dcc.Graph(id="graph", figure=fig),
-#     html.A(
-#         html.Button("Download HTML"),
-#         id="download",
-#         href="data:text/html;base64," + encoded,
-#         download="plotly_graph.html"
-#     )
-# ])
-
-# graph.run_server(debug=True)
-
-# heating.show()
-# print(x[['X4']])
-# print(len(x))
-# t = linspace(0, len(x), num=len(x))
-
-# plt.plot(x[['X1']], y[['Y1']])
-# plt.scatter(x[['X1']], y[['Y1']])
-# plt.show()
-# combine = dict(zip(x.X1, y.Y1))
-# print (combine)
-# plotly.plot(Scatter()
+# print(len(get_plots()))
+get_plots()
