@@ -38,5 +38,5 @@ def get_prediction_test(dict: pd.DataFrame, i) :
         print("Decision Tree Prediction: " + str(model.predict(dict)))
 
 
-get_prediction_test(x.iloc[[740]], i = 740)
+get_prediction_test(x.iloc[[710]], i = 710)
 
