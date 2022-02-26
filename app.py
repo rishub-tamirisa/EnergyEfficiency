@@ -21,8 +21,8 @@ def input():
         ga = float(request.form["glazing-area"])
         gad = float(request.form["glazing-area-distribution"])
 
-        # result_heating = validate.get_prediction(rc, sa, wa, ra, oh, ori, ga, gad)
-        result_heating = rc
+        result_heating = validate.get_prediction(rc, sa, wa, ra, oh, ori, ga, gad)
+    
 
         return redirect(url_for("user", usr=result_heating))
     else:
