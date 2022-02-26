@@ -17,6 +17,7 @@ class Network:
 
         m = Sequential([
             Dense(20, input_dim=numInputs, kernel_initializer='he_uniform', activation='relu'),
+            # Dense(10, input_dim=numInputs),
 	        Dense(numOutputs)
         ])
         m.compile(loss='categorical_crossentropy', optimizer=Adam(learning_rate=lr, beta_1=0.5), metrics=['accuracy'])

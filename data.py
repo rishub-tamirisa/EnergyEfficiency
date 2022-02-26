@@ -19,10 +19,13 @@ class Data:
     y = matrix[['Y1', 'Y2']]
     
 
-    def create_data(self):
-        x_train = Data.x[0:(len(Data.matrix)/2)]
-        y_train = Data.y[0:(len(Data.matrix)/2)]
-        x_test = Data.x[(len(Data.matrix)/2):len(Data.matrix)]
-        y_test = Data.y[(len(Data.matrix)/2):len(Data.matrix)]
+    def create_data():
+        x_train = Data.x[0:(int(len(Data.matrix)/2))]
+        y_train = Data.y[0:(int(len(Data.matrix)/2))]
+        x_test = Data.x[int(len(Data.matrix)/2):int(len(Data.matrix))]
+        y_test = Data.y[int(len(Data.matrix)/2):int(len(Data.matrix))]
+        # print(x_train)
+        # print(x_test)
         return x_train, y_train, x_test, y_test
     
+Data.create_data()
