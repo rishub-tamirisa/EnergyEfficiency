@@ -28,8 +28,8 @@ def get_prediction(x1, x2, x3, x4, x5, x6, x7, x8) :
         output = model.predict(user_input)
         # print(str(output[0]))
         # print(model.predict(user_input))
-        # return output[0][0], output[0][1]
-        return model.predict(user_input)
+        return output[0][0], output[0][1]
+        # return model.predict(user_input)
 
 
 # testing purposes

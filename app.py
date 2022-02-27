@@ -30,7 +30,7 @@ def input():
 
         # result_heating, result_cooling = validate.get_prediction(rc, sa, wa, ra, oh, ori, ga, gad)
 
-        result_heating = validate.get_prediction(rc, sa, wa, ra, oh, ori, ga, gad)
+        result_cooling, result_heating = validate.get_prediction(rc, sa, wa, ra, oh, ori, ga, gad)
 
 
 
@@ -38,11 +38,7 @@ def input():
     else:
         return render_template('input.html')
 
-<<<<<<< HEAD
-@app.route('/<usr>')
-=======
 @app.route("/<usr>")
->>>>>>> 009cfe8087d23c96f1db0a7aac10802bc0291ce1
 def user(usr):
     return f"<h1>{usr}</h1>"
 
