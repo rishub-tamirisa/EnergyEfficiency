@@ -23,13 +23,13 @@ def input():
         height = float(request.form["overall-height"])
         ori = float(request.form["orientation"])
         windows = float(request.form["number-of-windows"])
-
+        gad = float(request.form["distribution"])
         # ga = float(request.form["glazing-area"])
         # gad = float(request.form["glazing-area-distribution"])
         # sa = float(request.form["surface-area"])
         # wa = float(request.form["wall-area"])
         # ra = float(request.form["roof-area"])
-        
+
         window_area = 3.0
 
         #window distribution
@@ -40,15 +40,16 @@ def input():
         oh = height
 
         ga = windows * window_area / wa
-        
+
 
         # ga = windows * windowArea / 100
         # gad =
 
         # result_heating, result_cooling = validate.get_prediction(rc, sa, wa, ra, oh, ori, ga, gad)
 
-        result_cooling, result_heating = validate.get_prediction(rc, sa, wa, ra, oh, ori, ga, gad)
+        result_heating, result_cooling = validate.get_prediction(rc, sa, wa, ra, oh, ori, ga, gad)
 
+        # result_heating = [rc, sa, wa, ra, oh, ori, ga, gad]
 
 
         return redirect(url_for("user", usr=result_heating))
