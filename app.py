@@ -35,7 +35,7 @@ def input():
     else:
         return render_template('input.html')
 
-@app.route("/show_result")
+@app.route("/<usr>")
 def user(usr):
     return f"<h1>{usr}</h1>"
 
