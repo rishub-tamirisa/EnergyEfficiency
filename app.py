@@ -7,11 +7,13 @@ import analysis
 
 app = Flask(__name__)
 
+width = 0
+height = 0
+length = 0
 
 @app.route('/')
 def index():
     return render_template('index.html')
-
 
 @app.route('/input', methods=['POST', 'GET'])
 def input():
