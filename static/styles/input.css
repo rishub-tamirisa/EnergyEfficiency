@@ -24,6 +24,8 @@ h1 {
   color: #282d46;
 }
 
+p {text-align: center;}
+
 .container {
   display: flex;
   align-items: center;

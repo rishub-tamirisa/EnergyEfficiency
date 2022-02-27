@@ -18,7 +18,8 @@
 </head>
 <body>
     <main>
-        <h1>Input Building Requirements</h1>
+        <h1>Design your building</h1>
+        <p>Adjust the values in the fields below to create a building design, then calculate the estimated energy efficiency!</p>
         <div class="container">
             <div class="form-container">
                 <form action="#" method="post" class="form">
@@ -44,23 +45,23 @@
                             </div>
 
                             <div class="input">
-                                <label for="width">Width</label>
+                                <label for="width">Width (m)</label>
                                 <input step="any" type="number" id="width" name="width">
                             </div>
                             <div class="input">
-                                <label for="length">Length</label>
+                                <label for="length">Length (m)</label>
                                 <input step="any" type="number" id="length" name="length">
                             </div>
                             <div class="input">
-                                <label for="distribution">Windows Distributions</label>
+                                <label for="distribution">Window Distributions</label>
 
                                 <select class="form-select" aria-label="distribution" id="distribution" name="distribution">
-                                    <option selected>Choose an distribution:</option>
+                                    <option selected>Choose a distribution:</option>
                                     <option value="0">Very Close</option>
                                     <option value="1">Close</option>
-                                    <option value="2">Between</option>
-                                    <option value="3">Median</option>
-                                    <option value="4">Far</option>
+                                    <option value="2">Closer</option>
+                                    <option value="3">Far</option>
+                                    <option value="4">Farther</option>
                                     <option value="5">Very Far</option>
                                 </select>
                             </div>
