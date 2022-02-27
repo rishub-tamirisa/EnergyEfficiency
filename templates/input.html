@@ -6,54 +6,134 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/input.css') }}">
     <link rel="stylesheet" href="../static/styles/input.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+            integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+            integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+            crossorigin="anonymous"></script>
     <title>Input</title>
 </head>
 <body>
+    <div class="navbar">
+        <div class="icon-bar">
+            <img src="{{ url_for('static',filename='img/logo2.png') }}" alt="">
+            <div><h1 class="icon--text">CONSTRUCT</h1></div>
+        </div>
+        <div class="lists">
+            <a href="/show_graph" class="nav-link"><li class="nav-items">Data Visualization</li></a>
+            <a href="/input" class="nav-link"><li class="nav-items">Calculations</li></a>
+        </div>
+    </div>
     <main>
-        <h1>Input Building Requirements</h1>
+        <h1>Design your building</h1>
+        <p>Adjust the values in the fields below to create a building design, then calculate the estimated energy efficiency!</p>
         <div class="container">
             <div class="form-container">
                 <form action="#" method="post" class="form">
-                    <div class="input">
-                        <label for="relative-compactness">Relative Compactness</label>
-                        <input type="number" id="relative-compactness" name="relative-compactness">
-                    </div>
-                    <div class="input">
-                        <label for="surface-area">Surface Area</label>
-                        <input type="number" id="surface-area" name="surface-area">
-                    </div>
-                    <div class="input">
-                        <label for="wall-area">Wall Area</label>
-                        <input type="number" id="wall-area" name="wall-area">
-                    </div>
-                    <div class="input">
-                        <label for="roof-area">Roof Area</label>
-                        <input type="number" id="roof-area" name="roof-area">
-                    </div>
-                    <div class="input">
-                        <label for="overall-height">Overall Height</label>
-                        <input type="number" id="overall-height" name="overall-height">
-                    </div>
-                    <div class="input">
-                        <label for="orientation">Orientation</label>
-                        <input type="number" id="orientation" name="orientation">
-                    </div>
-                    <div class="input">
-                        <label for="glazing-area">Glazing Area</label>
-                        <input type="number" id="glazing-area" name="glazing-area">
-                    </div>
-                    <div class="input">
+                    <div class="row">
+                        <div class="col">
+                            <div class="input">
+                                <label for="relative-compactness">Relative Compactness</label>
+                                <!-- <input step="any" type="number" id="relative-compactness" name="relative-compactness"> -->
+                                <div class="range">
+                                    <div class="sliderValue">
+                                        <span>100</span>
+                                    </div>
+                                    <div class="field">
+                                        <div class="value left">
+                                            60%
+                                        </div>
+                                        <input id="range" type="range" min="60" max="99" value="0" steps="1" name="relative-compactness">
+                                        <div class="value right">
+                                            99%
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="input">
+                                <label for="width">Width (m)</label>
+                                <input step="any" type="number" id="width" name="width" min="0">
+                            </div>
+                            <div class="input">
+                                <label for="length">Length (m)</label>
+                                <input step="any" type="number" id="length" name="length" min="0">
+                            </div>
+                            <div class="input">
+                                <label for="distribution">Window Distributions</label>
+
+                                <select class="form-select" aria-label="distribution" id="distribution" name="distribution">
+                                    <option selected>Choose a distribution:</option>
+                                    <option value="0">Very Close</option>
+                                    <option value="1">Close</option>
+                                    <option value="2">Closer</option>
+                                    <option value="3">Far</option>
+                                    <option value="4">Farther</option>
+                                    <option value="5">Very Far</option>
+                                </select>
+                            </div>
+                        </div>
+                    <!-- <div class="input">
+                        <label for="roof-area">Roof Area(110 - 220)</label>
+                        <input step="any" type="number" id="roof-area" name="roof-area" min="110" max="220">
+                    </div> -->
+                        <div class="col">
+                            <div class="input">
+                                <label for="overall-height">Overall Height (m)</label>
+                                <input step="any" type="number" id="overall-height" name="overall-height">
+                            </div>
+                            <div class="input">
+                                <label for="number-of-windows"># of Windows</label>
+                                <input step="any" type="number" id="number-of-windows" name="number-of-windows">
+                            </div>
+                            <div class="input">
+                                <label for="orientation">Orientation(House Facing)</label>
+
+                                <select class="form-select" aria-label="orientation" id="orientation" name="orientation">
+                                    <option selected>Choose an orientation:</option>
+                                    <option value="2">North</option>
+                                    <option value="3">East</option>
+                                    <option value="4">South</option>
+                                    <option value="5">West</option>
+                                </select>
+                            </div>
+                            <input class="button" type="submit" value="submit">
+                        </div>
+                    <!-- <div class="input">
+                        <label for="glazing-area">Glazing Area(0.0 - 0.4)</label>
+                        <input step="any" type="number" id="glazing-area" name="glazing-area" min="0" max="0.4">
+                    </div> -->
+                    <!-- <div class="input">
                         <label for="glazing-area-distribution">Glazing Area Distribution</label>
-                        <input type="number" id="glazing-area-distribution" name="glazing-area-distribution">
+                        <input step="any" type="number" id="glazing-area-distribution" name="glazing-area-distribution">
+                    </div> -->
                     </div>
-                    <input class="button" type="submit" value="submit">
+
+
                 </form>
-                
+
             </div>
             <div class="tower">
                 <img src="{{ url_for('static',filename='img/building.png') }}" alt="">
             </div>
         </div>
     </main>
+
+    <script>
+        const slideValue = document.querySelector("span");
+        const inputSlider = document.querySelector("#range");
+        inputSlider.oninput = (() => {
+            let value = inputSlider.value;
+            slideValue.textContent = value;
+            // slideValue.style.left = (value) + "%";
+            slideValue.classList.add("show");
+        });
+        inputSlider.onblur = (() => {
+            slideValue.classList.remove("show");
+        });
+    </script>
 </body>
 </html>
