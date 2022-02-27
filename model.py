@@ -36,19 +36,36 @@ def train(iters):
     results = list()
     mean_rsq_err = list()
     mean_sq_err = list()
+    mean_sq_err_diff = list()
     # define evaluation procedure
     # enumerate folds
     max = 0
-    split = 0.20
+    split = 0.5
     for i in range(iters):
         print("Fold: %i" %(i))
         # prepare data
         # x_train, y_train, x_test, y_test = data.Data.create_data(train_split=0.5)
-        x_train, x_test, y_train, y_test = train_test_split(x,y,test_size=split,random_state=2)
+        x_train, x_test, y_train, y_test = train_test_split(x,y,test_size=split,random_state=np.random)
         ml.fit(x_train, y_train)
         # evaluate model on test set
+        prediction = ml.predict(x_test)
+        y_test_diffs = []
+        predict_diffs = []
+        for i in range(len(prediction)):
+            diff = prediction[i][0] - prediction[i][1]
+            y_diff = y_test.iloc[[i]]['Y1'] - y_test.iloc[[i]]['Y2']
+            y_diff = np.asarray(y_diff)[0]
+            # print(diff)
+            # print(y_diff)
+
+            y_test_diffs.append(y_diff)
+            predict_diffs.append(diff)
+
+        mse_diff = mean_squared_error(y_test_diffs, predict_diffs, squared=False)
         rmse = mean_squared_error(y_test, ml.predict(x_test), squared=False)
         mse = mean_squared_error(y_test, ml.predict(x_test), squared=True)
+
+        mean_sq_err_diff.append(mse_diff)
         mean_rsq_err.append(rmse)
         mean_sq_err.append(mse)
         acc = ml.score(x_test, y_test)
@@ -57,33 +74,43 @@ def train(iters):
             with open("model.pkl", "wb") as f:
                 pickle.dump(ml, f)
         results.append(acc)
-        if (split < 0.5):
-            split = split + 0.1
-    return results, mean_rsq_err, mean_sq_err
+        # if (split < 0.5):
+        #     split = split + 0.1
+    return results, mean_rsq_err, mean_sq_err, mean_sq_err_diff
 
-results, rmse, mse = train(iters=20)
+results, rmse, mse, mse_diff = train(iters=50)
 
-def get_plot_metrics(iters, results, mae, mse):
+def get_plot_metrics(iters, results, rmse, mse, mse_diff):
     t = list(range(0,iters))
     
     plt.figure()
-    plt.subplot(2, 3, 1)
+    plt.subplot(3, 3, 1)
     plt.plot(t, results)
-    plt.title("R^2 = " + str(round(np.mean(results), 2)))
+    plt.title("Norm R^2 = " + str(round(np.mean(results), 2)))
     plt.xlabel('Fold #')
     plt.ylabel('r^2')
-
-    plt.subplot(2, 3, 3)
+    plt.ylim(0.8, 1.0)
+    
+    plt.subplot(3, 3, 3)
     plt.plot(t, rmse)
-    plt.title("EV = " + str(round(np.mean(rmse), 2)))
+    plt.title("Norm RMSE = " + str(round(np.mean(rmse), 2)) + "±" + str(round(np.std(rmse), 2)))
     plt.xlabel('Fold #')
     plt.ylabel('RMSE') #interpretable in same units as cooling load and heating load
+    plt.ylim(1.0, 5.0)
     
-    plt.subplot(2, 3, 5)
+    plt.subplot(3, 3, 7)
     plt.plot(t, mse)
-    plt.title("MSE = " + str(round(np.mean(mse), 2)))
+    plt.title("Norm MSE = " + str(round(np.mean(mse), 2)) + "±" + str(round(np.std(mse), 2)))
     plt.xlabel('Fold #')
     plt.ylabel('MSE')
+    plt.ylim(1.0, 5.0)
+
+    plt.subplot(3, 3, 9)
+    plt.plot(t, mse_diff)
+    plt.title("Diff MSE = " + str(round(np.mean(mse_diff), 2)) + "±" + str(round(np.std(mse_diff), 2)))
+    plt.xlabel('Fold #')
+    plt.ylabel('MSE')
+    plt.ylim(1.0, 5.0)
 
     plt.savefig("model_eval")
 
@@ -92,7 +119,7 @@ print('Score: %.3f (%.3f)' % (np.mean(results), np.std(results)))
 print('EVS: %.3f (%.3f)' % (np.mean(rmse), np.std(rmse)))
 print("==============================")
 
-get_plot_metrics(20, results, rmse, mse)
+get_plot_metrics(50, results, rmse, mse, mse_diff)
 
 # train_nn()
 
