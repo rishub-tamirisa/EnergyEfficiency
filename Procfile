@@ -1,1 +1,1 @@
-wed: gunicorn wsgi:app
+wed: gunicorn app:app
