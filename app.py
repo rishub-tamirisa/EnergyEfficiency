@@ -32,7 +32,7 @@ def input():
 
         window_area = 3.0
 
-        #window distribution
+        # window distribution
 
         sa = 2 * width * length + 2 * length * height + 2 * height * width
         wa = 2 * width * height + 2 * length * height
@@ -41,24 +41,24 @@ def input():
 
         ga = windows * window_area / wa
 
-
         # ga = windows * windowArea / 100
         # gad =
 
         # result_heating, result_cooling = validate.get_prediction(rc, sa, wa, ra, oh, ori, ga, gad)
 
-        result_heating, result_cooling = validate.get_prediction(rc, sa, wa, ra, oh, ori, ga, gad)
+        result_heating, result_cooling = validate.get_prediction(
+            rc, sa, wa, ra, oh, ori, ga, gad)
 
         # result_heating = [rc, sa, wa, ra, oh, ori, ga, gad]
 
-
-        return redirect(url_for("user", usr=result_heating))
+        return redirect(url_for("result", heat=result_heating, cool=result_cooling))
     else:
         return render_template('input.html')
 
-@app.route("/<usr>")
-def user(usr):
-    return f"<h1>{usr}</h1>"
+
+@app.route("/<heat>/<cool>")
+def result(heat, cool):
+    return render_template('result.html', heat=heat, cool=cool)
 
 
 @app.route('/show_graph')
@@ -76,7 +76,6 @@ def get_graph():
 
     return render_template('showGraph.html', graph_1=graphs[0], graph_2=graphs[1], graph_3=graphs[2], graph_4=graphs[3], graph_5=graphs[4], graph_6=graphs[5], graph_7=graphs[6], graph_8=graphs[7])
 
-
     # return redirect(url_for("show_graphs", graphs=graphs))
 
 # @app.route('/show_graphs')
@@ -89,5 +88,3 @@ def get_graph():
 #     graph_6 = graphs[5]
 #     graph_7 = graphs[6]
 #     graph_8 = graphs[7]
-
-

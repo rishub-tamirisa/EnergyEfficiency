@@ -4,24 +4,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="result.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/result.css') }}">
+    <!-- <link rel="stylesheet" href="result.css"> -->
+
     <title>Document</title>
 </head>
 <body>
     <main>
-        <div class="graph-container">
-            <div class="range">
+        <div class="first graph-container">
+            <div class="first range">
                 <li>40-50</li>
                 <li>30-40</li>
                 <li>20-30</li>
                 <li>10-20</li>
                 <li>0-10</li>
             </div>
-            <div class="heating-load">
-                <h3></h3>
+
+            <div class="first heating-load-plate">
+                <div class="title">Heating load</div>
+                <div class="plate">
+                    <div class="number--red">{{heat}}</div>
+                    <div class="img--red"></div>
+                </div>
             </div>
-            <div class="empty"></div>
-            <div class="cooling-load"></div>
+
+            <div class="first empty"></div>
+
+            <div class="first cooling-load-plate">
+                <div class="title">Cooling load</div>
+                <div class="plate">
+                    <div class="number--blue">{{cool}}</div>
+                    <div class="img--blue"></div>
+                </div>
+            </div>
+
+            </div>
         </div>
     </main>
 </body>
