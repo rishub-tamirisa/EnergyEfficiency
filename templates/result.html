@@ -98,33 +98,9 @@
     </main>
 
     <script>
-        const boxs = document.querySelectorAll('.box')
-        const range1 = document.querySelector('#cowbell1')
-        const range2 = document.querySelector('#cowbell2')
 
-        range1.oninput = ( () => {
-            let value = range1.value;
-            boxs[0].style.height = `${value}px`;
-            boxs[1].style.height = `${value}px`;
-            boxs[2].style.height = `${value}px`;
-            boxs[3].style.height = `${value}px`;
-            boxs[4].style.height = `${value}px`;
-            boxs[5].style.height = `${value}px`;
-        })
-        range2.oninput = (() => {
-            let value = range2.value;
-            boxs[0].style.width = `${value}px`;
-            boxs[1].style.width = `${value}px`;
-            boxs[2].style.width = `${value}px`;
-            boxs[3].style.width = `${value}px`;
-            boxs[4].style.width = `${value}px`;
-            boxs[5].style.width = `${value}px`;
-            console.log(value)
-        })
 
-    </script>
 
-    <script>
         const heat = document.querySelector('.number--red')
         const cool = document.querySelector('.number--blue')
 
@@ -148,6 +124,32 @@
 
         const n = 1;
         // chanign length
+
+        const boxs = document.querySelectorAll('.box')
+            const range1 = document.querySelector('#cowbell1')
+            const range2 = document.querySelector('#cowbell2')
+
+            range1.oninput = (() => {
+                let value = range1.value;
+                boxs[0].style.height = `${value}px`;
+                boxs[1].style.height = `${value}px`;
+                boxs[2].style.height = `${value}px`;
+                boxs[3].style.height = `${value}px`;
+                boxs[4].style.height = `${value}px`;
+                boxs[5].style.height = `${value}px`;
+                redStick.style.height = `${increaseHeat += 0.3}px`
+                blueStick.style.height = `${increaseCool += 0.3}px`
+            })
+            range2.oninput = (() => {
+                let value = range2.value;
+                boxs[0].style.width = `${value}px`;
+                boxs[1].style.width = `${value}px`;
+                boxs[2].style.width = `${value}px`;
+                boxs[3].style.width = `${value}px`;
+                boxs[4].style.width = `${value}px`;
+                boxs[5].style.width = `${value}px`;
+                console.log(value)
+            })
 
 
     </script>
