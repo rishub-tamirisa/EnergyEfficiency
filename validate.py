@@ -25,8 +25,8 @@ def get_prediction(x1, x2, x3, x4, x5, x6, x7, x8) :
     user_input = input(x1,x2,x3,x4,x5,x6,x7,x8)
     with open("model.pkl", "rb") as f:
         model = pickle.load(f)
-        output = model.predict(dict)
-
+        output = model.predict(user_input)
+        # print(str(output[0]))
         # print(model.predict(user_input))
         # return output[0][0], output[0][1]
         return model.predict(user_input)
@@ -46,3 +46,7 @@ def get_prediction_test(dict: pd.DataFrame, i) :
 
 # print(get_prediction_test(x.iloc[[740]], i = 740))
 
+# heat, cool = get_prediction(0.66, 735, 319, 221, 3.5, 2, 0.25, 4)
+
+# print(heat)
+# print(cool)
