@@ -1,5 +1,6 @@
 from turtle import color
 from matplotlib.axis import YAxis
+import sklearn
 import data
 from numpy import *
 import math
@@ -12,6 +13,7 @@ import pandas as pd
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import pickle
+
 
 
 x = data.Data.x
@@ -38,11 +40,12 @@ yvars = ['Y1', 'Y2']
 def get_plots():
     html_plots = list()
     for i, id in enumerate(vars):
+
         heat = [x[[id]], y[['Y1']]]
         cool = [x[[id]], y[['Y2']]]
         heat = pd.concat(heat, axis=1)
         cool = pd.concat(cool, axis=1)
-
+        print(heat)
         heating = px.scatter(heat, x=id, y='Y1', trendline='lowess')
 
         cooling = px.scatter(cool, x=id, y='Y2', trendline='lowess')
@@ -57,7 +60,7 @@ def get_plots():
             figure2_traces.append(cooling["data"][trace])
 
         #Create a 1x2 subplot
-        fig = sp.make_subplots(rows=1, cols=2,  subplot_titles=(labels[i] + ' Effect on Heating Loasd',  labels[i] + ' Effect on Cooling Load'))
+        fig = sp.make_subplots(rows=1, cols=2,  subplot_titles=(labels[i] + ' Effect on Heating Load',  labels[i] + ' Effect on Cooling Load'))
         fig['layout']['xaxis']['title']=labels[i]
         fig['layout']['xaxis2']['title']=labels[i]
         fig['layout']['yaxis']['title']='Heating Efficiency'
@@ -71,7 +74,7 @@ def get_plots():
             fig.append_trace(traces, row=1, col=2)
 
         fig.update_traces(marker=dict(size=5,
-                                    opacity=0.5,
+                                    opacity=0.2,
                                 ),
                     selector=dict(mode='markers'))
 
