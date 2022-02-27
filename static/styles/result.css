@@ -144,9 +144,9 @@ li {
 }
 .title {
   position: absolute;
-  top: -10%;
-  left: -1%;
-  width: 82px;
+  top: -15%;
+  left: -25%;
+  width: 120px;
   height: 20px;
   font-weight: 800;
   font-size: 12px;
@@ -168,6 +168,7 @@ li {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  margin-right: 40px;
 }
 
 .text p {
