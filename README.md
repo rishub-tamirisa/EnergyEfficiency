@@ -3,7 +3,7 @@
 A web app that predicts the energy efficiency of a building given its characteristics.
 
 
-#Dataset Citation
+# Dataset Citation
 
 Tsanas, A., Xifara, A., 2012. Accurate quantitative estimation of energy performance of
   residential buildings using statistical machine learning tools. Energy Build. 48, 
