@@ -40,8 +40,7 @@ li {
 
 .img--red {
   background: #ef2a82;
-  border-radius: 0px 28px 28px 0px;
-  transform: rotate(-90deg);
+  border-radius: 28px 28px 0px 0px;
   width: 30px;
   height: 20.3px;
 }
@@ -49,8 +48,7 @@ li {
   width: 30px;
   height: 19.34px;
   background: #0088f0;
-  border-radius: 0px 28px 28px 0px;
-  transform: rotate(-90deg);
+  border-radius: 28px 28px 0px 0px;
 }
 
 .plate {

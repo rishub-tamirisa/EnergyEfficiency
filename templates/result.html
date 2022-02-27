@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/result.css') }}">
-    <!-- <link rel="stylesheet" href="result.css"> -->
+
+    <link rel="stylesheet" href="../static/styles/result.css">
 
     <title>Document</title>
 </head>
@@ -41,5 +42,33 @@
             </div>
         </div>
     </main>
+
+    <script>
+        const heat = document.querySelector('.number--red')
+        const cool = document.querySelector('.number--blue')
+
+        const redStick = document.querySelector('.img--red')
+        const blueStick = document.querySelector('.img--blue')
+
+
+        const heatNum = parseInt(heat.textContent)
+        const coolNum = parseInt(cool.textContent)
+
+        let increaseHeat = heatNum * 5;
+        let increaseCool = coolNum * 5;
+
+        // default length
+        redStick.style.height = '0px'
+        blueStick.style.height = '0px'
+
+        redStick.style.height = `${increaseHeat}px`
+        blueStick.style.height = `${increaseCool}px`
+
+
+        const n = 1;
+        // chanign length
+
+
+    </script>
 </body>
 </html>
