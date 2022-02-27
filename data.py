@@ -11,7 +11,7 @@ import os
 dir_path = os.path.dirname(os.path.realpath(__file__))
 path = Path(dir_path)
 path = str(path) + "/ENB2012_data.xlsx"
-print(path)
+# print(path)
 
 
 class Data:
