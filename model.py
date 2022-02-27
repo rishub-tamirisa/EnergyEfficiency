@@ -95,43 +95,53 @@ def get_plot_metrics(iters, results, rmse, mse, mse_diff, cvs):
     tc = list(range(10))
     
     plt.figure()
-    plt.subplot(3, 3, 1)
+    # plt.subplot(3, 3, 1)
     plt.plot(t, results)
     plt.title("Norm R^2 = " + str(round(np.mean(results), 2)))
     plt.xlabel('Fold #')
     plt.ylabel('r^2')
     plt.ylim(0.8, 1.0)
-    
-    plt.subplot(3, 3, 3)
+    plt.savefig("norm_r2")
+
+    plt.figure()
+    # plt.subplot(3, 3, 3)
     plt.plot(t, rmse)
     plt.title("Norm RMSE = " + str(round(np.mean(rmse), 2)) + "±" + str(round(np.std(rmse), 2)))
     plt.xlabel('Fold #')
     plt.ylabel('RMSE') #interpretable in same units as cooling load and heating load
     plt.ylim(1.0, 5.0)
+    plt.savefig("norm_rmse")
+
+    plt.figure()
     
-    print(cvs)
-    plt.subplot(3, 3, 5)
+    # print(cvs)
+    # plt.subplot(3, 3, 5)
     plt.plot(tc, cvs)
-    plt.title("CV MAE = " + str(round(np.mean(cvs), 2)) + "±" + str(round(np.std(cvs), 2)))
+    plt.title("Cross-Validation MAE = " + str(round(np.mean(cvs), 2)) + "±" + str(round(np.std(cvs), 2)))
     plt.xlabel('Fold #')
     plt.ylabel('MAE') 
     # plt.ylim(1.0, 5.0)
+    plt.savefig("crossval_mae")
 
-    plt.subplot(3, 3, 7)
+    plt.figure()
+
+    # plt.subplot(3, 3, 7)
     plt.plot(t, mse)
     plt.title("Norm MSE = " + str(round(np.mean(mse), 2)) + "±" + str(round(np.std(mse), 2)))
     plt.xlabel('Fold #')
     plt.ylabel('MSE')
     plt.ylim(1.0, 5.0)
+    plt.savefig("norm_mse")
 
-    plt.subplot(3, 3, 9)
+    plt.figure()
+
+    # plt.subplot(3, 3, 9)
     plt.plot(t, mse_diff)
     plt.title("Diff MSE = " + str(round(np.mean(mse_diff), 2)) + "±" + str(round(np.std(mse_diff), 2)))
     plt.xlabel('Fold #')
     plt.ylabel('MSE')
     plt.ylim(1.0, 5.0)
-
-    plt.savefig("model_eval")
+    plt.savefig("diff_mse")
 
 
 print('Score: %.3f (%.3f)' % (np.mean(results), np.std(results)))
