@@ -10,6 +10,9 @@ import pickle
 from sklearn.metrics import explained_variance_score, mean_absolute_error, mean_squared_error, mean_squared_log_error, r2_score
 import matplotlib.pyplot as plt
 
+from sklearn.model_selection import KFold
+from sklearn.model_selection import cross_val_score
+
 
 import numpy as np
 net = network.Network
@@ -37,6 +40,8 @@ def train(iters):
     mean_rsq_err = list()
     mean_sq_err = list()
     mean_sq_err_diff = list()
+    cv = KFold(n_splits=10, random_state=1, shuffle=True)
+
     # define evaluation procedure
     # enumerate folds
     max = 0
@@ -76,12 +81,18 @@ def train(iters):
         results.append(acc)
         # if (split < 0.5):
         #     split = split + 0.1
-    return results, mean_rsq_err, mean_sq_err, mean_sq_err_diff
 
-results, rmse, mse, mse_diff = train(iters=50)
+        
+        # print(cvs)
+    cvs = cross_val_score(ml, x, y, scoring='neg_mean_absolute_error', cv=cv, n_jobs=-1)
+    cvs = np.sqrt(np.square(cvs))
+    return results, mean_rsq_err, mean_sq_err, mean_sq_err_diff, cvs
 
-def get_plot_metrics(iters, results, rmse, mse, mse_diff):
+results, rmse, mse, mse_diff, cvs = train(iters=50)
+
+def get_plot_metrics(iters, results, rmse, mse, mse_diff, cvs):
     t = list(range(0,iters))
+    tc = list(range(10))
     
     plt.figure()
     plt.subplot(3, 3, 1)
@@ -98,6 +109,14 @@ def get_plot_metrics(iters, results, rmse, mse, mse_diff):
     plt.ylabel('RMSE') #interpretable in same units as cooling load and heating load
     plt.ylim(1.0, 5.0)
     
+    print(cvs)
+    plt.subplot(3, 3, 5)
+    plt.plot(tc, cvs)
+    plt.title("CV MAE = " + str(round(np.mean(cvs), 2)) + "±" + str(round(np.std(cvs), 2)))
+    plt.xlabel('Fold #')
+    plt.ylabel('MAE') 
+    # plt.ylim(1.0, 5.0)
+
     plt.subplot(3, 3, 7)
     plt.plot(t, mse)
     plt.title("Norm MSE = " + str(round(np.mean(mse), 2)) + "±" + str(round(np.std(mse), 2)))
@@ -119,7 +138,7 @@ print('Score: %.3f (%.3f)' % (np.mean(results), np.std(results)))
 print('EVS: %.3f (%.3f)' % (np.mean(rmse), np.std(rmse)))
 print("==============================")
 
-get_plot_metrics(50, results, rmse, mse, mse_diff)
+get_plot_metrics(50, results, rmse, mse, mse_diff, cvs)
 
 # train_nn()
 
