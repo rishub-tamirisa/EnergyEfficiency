@@ -18,31 +18,32 @@ def input():
     if request.method == "POST":
 
         rc = float(request.form["relative-compactness"]) / 100
-        sa = float(request.form["surface-area"])
-        wa = float(request.form["wall-area"])
-        ra = float(request.form["roof-area"])
-        oh = float(request.form["overall-height"])
+        width = float(request.form["width"])
+        length = float(request.form["length"])
+        height = float(request.form["overall-height"])
         ori = float(request.form["orientation"])
-        ga = float(request.form["glazing-area"])
-        gad = float(request.form["glazing-area-distribution"])
+        windows = float(request.form["number-of-windows"])
 
+        # ga = float(request.form["glazing-area"])
+        # gad = float(request.form["glazing-area-distribution"])
+        # sa = float(request.form["surface-area"])
+        # wa = float(request.form["wall-area"])
+        # ra = float(request.form["roof-area"])
 
+        sa = 2 * width * length + 2 * length * height + 2 * height * width
+        wa = 2 * width * height + 2 * length * height
+        ra = width * length
+        # ga = windows * windowArea / 100
+        # gad =
 
-        # result_heating, result_cooling = validate.get_prediction(rc, sa, wa, ra, oh, ori, ga, gad)
-
-        result_heating = validate.get_prediction(rc, sa, wa, ra, oh, ori, ga, gad)
-
+        result_heating, result_cooling = validate.get_prediction(rc, sa, wa, ra, height, ori, ga, gad)
 
 
         return redirect(url_for("user", usr=result_heating))
     else:
         return render_template('input.html')
 
-<<<<<<< HEAD
-@app.route('/<usr>')
-=======
 @app.route("/<usr>")
->>>>>>> 009cfe8087d23c96f1db0a7aac10802bc0291ce1
 def user(usr):
     return f"<h1>{usr}</h1>"
 

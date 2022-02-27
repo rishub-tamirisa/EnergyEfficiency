@@ -21,15 +21,17 @@ def input (x1, x2, x3, x4, x5, x6, x7, x8):
     return dict
 
 #true input
-def get_prediction(x1, x2, x3, x4, x5, x6, x7, x8) :
-    user_input = input(x1,x2,x3,x4,x5,x6,x7,x8)
+
+
+def get_prediction(x1, x2, x3, x4, x5, x6, x7, x8):
+    user_input = input(x1, x2, x3, x4, x5, x6, x7, x8)
     with open("model.pkl", "rb") as f:
         model = pickle.load(f)
         output = model.predict(user_input)
         # print(str(output[0]))
         # print(model.predict(user_input))
-        # return output[0][0], output[0][1]
-        return model.predict(user_input)
+        return output[0][0], output[0][1]
+        # return model.predict(user_input)
 
 
 # testing purposes
