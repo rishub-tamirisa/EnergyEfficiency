@@ -29,12 +29,19 @@ def input():
         # sa = float(request.form["surface-area"])
         # wa = float(request.form["wall-area"])
         # ra = float(request.form["roof-area"])
+        
+        window_area = 3.0
 
         #window distribution
 
         sa = 2 * width * length + 2 * length * height + 2 * height * width
         wa = 2 * width * height + 2 * length * height
         ra = width * length
+        oh = height
+
+        ga = windows * window_area / wa
+        
+
         # ga = windows * windowArea / 100
         # gad =
 
