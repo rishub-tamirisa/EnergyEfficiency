@@ -64,28 +64,28 @@ def train(iters):
 results, mae, mse = train(iters=20)
 
 def get_plot_metrics(iters, results, mae, mse):
-    t = np.linspace(0,1,iters)
+    t = list(range(0,iters))
     
     plt.figure()
-    plt.subplot(3, 3, 1)
+    plt.subplot(2, 3, 1)
     plt.plot(t, results)
     plt.title("R^2 = " + str(round(np.mean(results), 2)))
     plt.xlabel('Fold #')
     plt.ylabel('r^2')
 
-    plt.subplot(3, 3, 3)
+    plt.subplot(2, 3, 3)
     plt.plot(t, mae)
     plt.title("MAE = " + str(round(np.mean(mae), 2)))
     plt.xlabel('Fold #')
     plt.ylabel('MAE')
     
-    plt.subplot(3, 3, 5)
+    plt.subplot(2, 3, 5)
     plt.plot(t, mse)
     plt.title("MSE = " + str(round(np.mean(mse), 2)))
     plt.xlabel('Fold #')
     plt.ylabel('MSE')
 
-    plt.show()
+    plt.savefig("model_eval")
 
 
 # print('Score: %.3f (%.3f)' % (np.mean(results), np.std(results)))
