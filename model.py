@@ -1,4 +1,6 @@
+from sklearn.ensemble import RandomForestRegressor
 from sklearn.neural_network import MLPRegressor
+from sklearn.svm import LinearSVR
 from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor
 import network
 import data
@@ -9,6 +11,8 @@ from sklearn.neighbors import KNeighborsClassifier, KNeighborsRegressor, Nearest
 import pickle
 from sklearn.metrics import explained_variance_score, mean_absolute_error, mean_squared_error, mean_squared_log_error, r2_score
 import matplotlib.pyplot as plt
+from sklearn import tree
+
 
 from sklearn.model_selection import KFold
 from sklearn.model_selection import cross_val_score
@@ -17,8 +21,8 @@ from sklearn.model_selection import cross_val_score
 import numpy as np
 net = network.Network
 
-input =  DecisionTreeRegressor()
-ml = MultiOutputRegressor(input, n_jobs=-1)
+ml =  DecisionTreeRegressor(criterion='squared_error')
+# ml = MultiOutputRegressor(input, n_jobs=-1)
 
 def train_nn():
     x_train, y_train, x_test, y_test = data.Data.create_data(train_split=0.5)
@@ -84,8 +88,12 @@ def train(iters):
 
         
         # print(cvs)
-    cvs = cross_val_score(ml, x, y, scoring='neg_mean_absolute_error', cv=cv, n_jobs=-1)
-    cvs = np.sqrt(np.square(cvs))
+    with open("model.pkl", "rb") as f:
+        model = pickle.load(f)
+        cvs = cross_val_score(ml, x, y, scoring='neg_mean_absolute_error', cv=cv, n_jobs=-1)
+        cvs = np.sqrt(np.square(cvs))
+    # tree.plot_tree(ml)
+    # plt.show()
     return results, mean_rsq_err, mean_sq_err, mean_sq_err_diff, cvs
 
 results, rmse, mse, mse_diff, cvs = train(iters=50)
@@ -97,7 +105,7 @@ def get_plot_metrics(iters, results, rmse, mse, mse_diff, cvs):
     plt.figure()
     # plt.subplot(3, 3, 1)
     plt.plot(t, results)
-    plt.title("Norm R^2 = " + str(round(np.mean(results), 2)))
+    plt.title("Norm R^2 = " + str(round(np.mean(results), 3)))
     plt.xlabel('Fold #')
     plt.ylabel('r^2')
     plt.ylim(0.8, 1.0)
@@ -145,10 +153,11 @@ def get_plot_metrics(iters, results, rmse, mse, mse_diff, cvs):
 
 
 print('Score: %.3f (%.3f)' % (np.mean(results), np.std(results)))
-print('EVS: %.3f (%.3f)' % (np.mean(rmse), np.std(rmse)))
+print('RMSE: %.3f (%.3f)' % (np.mean(rmse), np.std(rmse)))
 print("==============================")
 
 get_plot_metrics(50, results, rmse, mse, mse_diff, cvs)
-
+# tree.plot_tree(input)
+# plt.show()
 # train_nn()
 
