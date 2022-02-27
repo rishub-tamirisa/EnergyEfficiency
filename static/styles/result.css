@@ -201,11 +201,18 @@ a button {
 
 /* 3d */
 
+.controllers{
+  width: 20vw;
+  position: absolute;
+  left: 20%;
+  top: 15%;
+}
+
 
 #wrapper {
             position: absolute;
-            left: 50%;
-            top: 40%;
+            left: 65%;
+            top: 35%;
             perspective: 1500px;
         }
 
@@ -259,3 +266,5 @@ a button {
         .box-area {
             transform: rotateX(90deg) rotateY(90deg) rotateZ(90deg);
         }
+
+
