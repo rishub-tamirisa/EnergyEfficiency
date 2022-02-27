@@ -45,7 +45,22 @@ def get_plots():
         cool = [x[[id]], y[['Y2']]]
         heat = pd.concat(heat, axis=1)
         cool = pd.concat(cool, axis=1)
+        
+        hstddev = np.std(np.asarray(y[['Y1']]))
+        hmean = np.mean(np.asarray(y[['Y1']]))
+        hcoeff = hstddev / hmean
+
+        xstddev = np.std(np.asarray(x[[id]]))
+        xmean = np.mean(np.asarray(x[[id]]))
+        xcoeff = xstddev / xmean
+
+        cstddev = np.std(np.asarray(y[['Y2']]))
+        cmean = np.mean(np.asarray(y[['Y2']]))
+        ccoeff = cstddev / cmean
+
         # print(heat)
+        # print (hstddev)
+        # print (mean)
         heating = px.scatter(heat, x=id, y='Y1', trendline='lowess')
 
         cooling = px.scatter(cool, x=id, y='Y2', trendline='lowess')
@@ -61,10 +76,10 @@ def get_plots():
 
         #Create a 1x2 subplot
         fig = sp.make_subplots(rows=1, cols=2,  subplot_titles=(labels[i] + ' Effect on Heating Load',  labels[i] + ' Effect on Cooling Load'))
-        fig['layout']['xaxis']['title']=labels[i]
-        fig['layout']['xaxis2']['title']=labels[i]
-        fig['layout']['yaxis']['title']='Heating Efficiency'
-        fig['layout']['yaxis2']['title']='Cooling Efficiency'
+        fig['layout']['xaxis']['title']=labels[i] + " (Co. of Var: " + str(np.round(xcoeff, 2)) + ")"
+        fig['layout']['xaxis2']['title']=labels[i] + " (Co. of Var: " + str(np.round(xcoeff, 2)) + ")"
+        fig['layout']['yaxis']['title']='Heating Efficiency' + " (Co. of Var: " + str(np.round(hcoeff, 2)) + ")"
+        fig['layout']['yaxis2']['title']='Cooling Efficiency' + " (Co. of Var: " + str(np.round(ccoeff, 2)) + ")"
         # Get the Express fig broken down as traces and add the traces to the proper plot within in the subplot
 
         for traces in figure1_traces:
@@ -90,4 +105,4 @@ def get_plots():
         html_plots.append(plot(fig, include_plotlyjs=True, output_type='div'))
     return html_plots
 # print(len(get_plots()))
-get_plots()
+# get_plots()
