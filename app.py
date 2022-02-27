@@ -29,21 +29,24 @@ def input():
         # sa = float(request.form["surface-area"])
         # wa = float(request.form["wall-area"])
         # ra = float(request.form["roof-area"])
+        
+        window_area = 3.0
 
         sa = 2 * width * length + 2 * length * height + 2 * height * width
         wa = 2 * width * height + 2 * length * height
         ra = width * length
+        oh = height
+
+        ga = windows * window_area / wa
+        
+
         # ga = windows * windowArea / 100
         # gad =
 
-<<<<<<< HEAD
-        result_heating, result_cooling = validate.get_prediction(rc, sa, wa, ra, height, ori, ga, gad)
-=======
         # result_heating, result_cooling = validate.get_prediction(rc, sa, wa, ra, oh, ori, ga, gad)
 
         result_cooling, result_heating = validate.get_prediction(rc, sa, wa, ra, oh, ori, ga, gad)
 
->>>>>>> 68062be768fb72ae8b3513c829b6044f38581abf
 
 
         return redirect(url_for("user", usr=result_heating))
