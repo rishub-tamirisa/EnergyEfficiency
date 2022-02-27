@@ -53,14 +53,14 @@ def input():
 
         # result_heating = [rc, sa, wa, ra, oh, ori, ga, gad]
 
-        return redirect(url_for("result", heat=result_heating, cool=result_cooling))
+        return redirect(url_for("result", heat=result_heating, cool=result_cooling, w=width, l=length, h=height))
     else:
         return render_template('input.html')
 
 
-@app.route("/<heat>/<cool>")
-def result(heat, cool):
-    return render_template('result.html', heat=heat, cool=cool)
+@app.route("/<heat>/<cool>/<w>/<l>/<h>")
+def result(heat, cool, w, l, h):
+    return render_template('result.html', heat=heat, cool=cool, w=w, l=l, h=h)
 
 
 @app.route('/show_graph')

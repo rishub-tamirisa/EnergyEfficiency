@@ -229,7 +229,7 @@ input[type="number"] {
   transition: transform 0.3s ease-in-out;
 }
 .sliderValue span.show {
-  transform: translateX(350%) scale(1);
+  transform: translateX(360%) scale(1);
 }
 .sliderValue span:after {
   position: absolute;
@@ -240,7 +240,9 @@ input[type="number"] {
   border: 3px solid #fff;
   z-index: -1;
   left: 23%;
-  transform: translateX(-50%) rotate(45deg);
+  top: 10%;
+  transform: translateX(-50%);
+  border-bottom-right-radius: 50%;
   border-bottom-left-radius: 50%;
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
   border-top-left-radius: 50%;
