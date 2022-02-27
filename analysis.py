@@ -1,4 +1,3 @@
-from turtle import color
 from matplotlib.axis import YAxis
 import sklearn
 import data
