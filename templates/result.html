@@ -35,8 +35,35 @@
         </div>
     </div>
 
-    <section class="animation">
-        <div class="controllers">
+    <body>
+        <script src="https://threejs.org/build/three.js"></script>
+        <script type="text/javascript">
+            var scene = new THREE.Scene();
+            var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
+
+            var renderer = new THREE.WebGLRenderer();
+            renderer.setSize( window.innerWidth, window.innerHeight );
+            document.body.appendChild( renderer.domElement );
+
+            var geometry = new THREE.BoxGeometry( 3, 2, 3 );
+            var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+            var cube = new THREE.Mesh( geometry, material );
+            scene.add( cube );
+
+            camera.position.z = 5;
+
+            var animate = function () {
+                requestAnimationFrame( animate );
+
+                cube.rotation.x += 0.01;
+                cube.rotation.y += 0.01;
+
+                renderer.render( scene, camera );
+            };
+
+            animate();
+        </script>
+        <!-- <div class="controllers">
             <label for="customRange3" class="form-label">Height</label>
             <input id="cowbell1" type="range" class="form-range" min="1" max="400" step="1" >
 
@@ -51,8 +78,8 @@
                 <div id="box-back" class="box"></div>
                 <div id="box-left" class="box"></div>
             </div>
-        </div>
-    </section>
+        </div> -->
+    <body>
     <main>
         
         <div class="text">
