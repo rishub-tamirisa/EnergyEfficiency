@@ -11,7 +11,7 @@ from plotly.offline import plot
 import pandas as pd
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
-
+import pickle
 
 
 x = data.Data.x
@@ -32,6 +32,9 @@ yvars = ['Y1', 'Y2']
 
 #array containing html for all 8 scatter plots
 
+
+        
+
 def get_plots():
     html_plots = list()
     for i, id in enumerate(vars):
@@ -40,8 +43,9 @@ def get_plots():
         heat = pd.concat(heat, axis=1)
         cool = pd.concat(cool, axis=1)
 
-        heating = px.scatter(heat, x=id, y='Y1')
-        cooling = px.scatter(cool, x=id, y='Y2')
+        heating = px.scatter(heat, x=id, y='Y1', trendline='lowess')
+
+        cooling = px.scatter(cool, x=id, y='Y2', trendline='lowess')
 
         figure1_traces = []
         figure2_traces = []
@@ -53,7 +57,7 @@ def get_plots():
             figure2_traces.append(cooling["data"][trace])
 
         #Create a 1x2 subplot
-        fig = sp.make_subplots(rows=1, cols=2,  subplot_titles=(labels[i] + ' Effect on Heating Efficiency',  labels[i] + ' Effect on Cooling Efficiency'))
+        fig = sp.make_subplots(rows=1, cols=2,  subplot_titles=(labels[i] + ' Effect on Heating Loasd',  labels[i] + ' Effect on Cooling Load'))
         fig['layout']['xaxis']['title']=labels[i]
         fig['layout']['xaxis2']['title']=labels[i]
         fig['layout']['yaxis']['title']='Heating Efficiency'
