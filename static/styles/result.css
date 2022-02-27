@@ -9,6 +9,7 @@
 body {
   position: relative;
   padding-top: 10px;
+  margin:0 auto;
 }
 main {
   margin-top: 250px;
@@ -20,7 +21,9 @@ main {
   flex-direction: row;
 }
 
-
+/* .render {
+  margin:0 auto;
+} */
 /* navbar */
 .nav-bar {
   width: 60vw;

@@ -34,54 +34,37 @@
             </a>
         </div>
     </div>
+    <div style="width:800px; margin:0 auto;">
+        <body>
+            <script src="https://threejs.org/build/three.js"></script>
+            <script type="text/javascript">
+                var scene = new THREE.Scene();
+                var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
+                var renderer = new THREE.WebGLRenderer(/*{ alpha: true }*/);
+                renderer.setSize( window.innerWidth / 2, window.innerHeight / 2 );
+                document.body.appendChild( renderer.domElement );
 
-    <body>
-        <script src="https://threejs.org/build/three.js"></script>
-        <script type="text/javascript">
-            var scene = new THREE.Scene();
-            var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
+                var geometry = new THREE.BoxGeometry( 3, 2, 3 );
+                var material = new THREE.MeshBasicMaterial( { color: 0xADD8E6 } );
+                var cube = new THREE.Mesh( geometry, material );
+                scene.add( cube );
 
-            var renderer = new THREE.WebGLRenderer();
-            renderer.setSize( window.innerWidth, window.innerHeight );
-            document.body.appendChild( renderer.domElement );
+                camera.position.z = 5;
 
-            var geometry = new THREE.BoxGeometry( 3, 2, 3 );
-            var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-            var cube = new THREE.Mesh( geometry, material );
-            scene.add( cube );
+                var animate = function () {
+                    requestAnimationFrame( animate );
 
-            camera.position.z = 5;
+                    cube.rotation.x += 0.01;
+                    cube.rotation.y += 0.01;
 
-            var animate = function () {
-                requestAnimationFrame( animate );
+                    renderer.render( scene, camera );
+                };
 
-                cube.rotation.x += 0.01;
-                cube.rotation.y += 0.01;
-
-                renderer.render( scene, camera );
-            };
-
-            animate();
-        </script>
-        <!-- <div class="controllers">
-            <label for="customRange3" class="form-label">Height</label>
-            <input id="cowbell1" type="range" class="form-range" min="1" max="400" step="1" >
-
-            <label for="customRange3" class="form-label">Width</label>
-            <input id="cowbell2" type="range" class="form-range" min="1" max="800" step="1" >
-        </div>
-
-        <div id="wrapper">
-            <div class="box-area">
-                <div id="box-front" class="box"></div>
-                <div id="box-right" class="box"></div>
-                <div id="box-back" class="box"></div>
-                <div id="box-left" class="box"></div>
-            </div>
-        </div> -->
-    <body>
+                animate();
+            </script>
+        <body>
+    </div>
     <main>
-        
         <div class="text">
             <div class="handle-button">
                 <a href="/input"><button>Try another input!</button></a>
