@@ -45,7 +45,7 @@ def get_plots():
         cool = [x[[id]], y[['Y2']]]
         heat = pd.concat(heat, axis=1)
         cool = pd.concat(cool, axis=1)
-        print(heat)
+        # print(heat)
         heating = px.scatter(heat, x=id, y='Y1', trendline='lowess')
 
         cooling = px.scatter(cool, x=id, y='Y2', trendline='lowess')
