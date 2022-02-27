@@ -34,51 +34,22 @@
             </a>
         </div>
     </div>
-
-    <body>
-        <script src="https://threejs.org/build/three.js"></script>
-        <script type="text/javascript">
-            var scene = new THREE.Scene();
-            var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
-
-            var renderer = new THREE.WebGLRenderer({ alpha: true });
-            renderer.setSize( window.innerWidth, window.innerHeight );
-            document.body.appendChild( renderer.domElement );
-
-            var geometry = new THREE.BoxGeometry( 3, 2, 3 );
-            var material = new THREE.MeshBasicMaterial( { color: 0xADD8E6 } );
-            var cube = new THREE.Mesh( geometry, material );
-            scene.add( cube );
-
-            camera.position.z = 7;
-
-            var animate = function () {
-                requestAnimationFrame( animate );
-
-                cube.rotation.x += 0.001;
-                cube.rotation.y += 0.001;
-
-                renderer.render( scene, camera );
-            };
-            animate();
-        </script>
         <!-- <div class="controllers">
             <label for="customRange3" class="form-label">Height</label>
             <input id="cowbell1" type="range" class="form-range" min="1" max="400" step="1" >
 
             <label for="customRange3" class="form-label">Width</label>
             <input id="cowbell2" type="range" class="form-range" min="1" max="800" step="1" >
-        </div>
+        </div> -->
 
-        <div id="wrapper">
+         <!-- <div id="wrapper">
             <div class="box-area">
                 <div id="box-front" class="box"></div>
                 <div id="box-right" class="box"></div>
                 <div id="box-back" class="box"></div>
                 <div id="box-left" class="box"></div>
             </div>
-        </div> -->
-    <body>
+        </div>  -->
     <main>
         
         <div class="text">
@@ -118,8 +89,74 @@
             </div>
 
             </div>
-
+            <h1 class="get-num length">{{l}}</h1>
+            <h1 class="get-num width">{{w}}</h1>
+            <h1 class="get-num height">{{h}}</h1>
     </main>
+    <script src="https://threejs.org/build/three.js"></script>
+        <script type="text/javascript">
+
+            var scene = new THREE.Scene();
+            var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
+
+            var renderer = new THREE.WebGLRenderer({ alpha: true });
+            renderer.setSize( window.innerWidth, window.innerHeight );
+            document.body.appendChild( renderer.domElement );
+            
+            const lenght = document.querySelector('.length')
+            const width = document.querySelector('.width')
+            const height = document.querySelector('.height')
+            
+            let x = parseFloat(lenght.textContent)
+            let y = parseFloat(width.textContent)
+            let z = parseFloat(height.textContent)
+
+            // let x = 1, y = 1, z = 1;
+            
+            // const range1 = document.querySelector('#cowbell1')
+            // const range2 = document.querySelector('#cowbell2')
+            // let previous = 0;
+            // range1.oninput = (() => {
+            //     let value = range1.value;
+            //     console.log(value)
+            //     if (value > previous){
+            //         x += 0.5;
+            //         y += 0.5;
+            //         z += 0.5;
+            //     } else {
+            //         x -= 0.5;
+            //         y -= 0.5;
+            //         z -= 0.5;
+            //         if (x <= 0){
+            //             x = 1;
+            //         } else if (y <= 0) {
+            //             y = 1;
+            //         } else if (z <= 0){
+            //             z = 1;
+            //         }
+            //     }
+            //     geometry = new THREE.BoxGeometry( 2, 2, 3 );
+            //     previous = value;
+            // })
+
+
+            var geometry = new THREE.BoxGeometry( 1, 2, 3 );
+            var material = new THREE.MeshBasicMaterial( { color: 0xADD8E6 } );
+            var cube = new THREE.Mesh( geometry, material );
+            scene.add( cube );
+
+            camera.position.z = 7;
+
+            var animate = function () {
+                requestAnimationFrame( animate );
+
+                cube.rotation.x += 0.005;
+                cube.rotation.y += 0.001;
+
+                renderer.render( scene, camera );
+            };
+            animate();
+        </script>
 
     <script>
         const heat = document.querySelector('.number--red')
@@ -127,7 +164,6 @@
 
         const redStick = document.querySelector('.img--red')
         const blueStick = document.querySelector('.img--blue')
-        console.log(redStick, blueStick)
 
         const heatNum = parseInt(heat.textContent)
         const coolNum = parseInt(cool.textContent)
@@ -144,27 +180,27 @@
 
 
         const n = 1;
-        // chanign length
 
-            const boxs = document.querySelectorAll('.box')
-            const range1 = document.querySelector('#cowbell1')
-            const range2 = document.querySelector('#cowbell2')
-            let previous = 0;
-            range1.oninput = (() => {
-                let value = range1.value;
-                boxs[0].style.height = `${value}px`;
-                boxs[1].style.height = `${value}px`;
-                boxs[2].style.height = `${value}px`;
-                boxs[3].style.height = `${value}px`;
-                if (value > previous){
-                    redStick.style.height = `${increaseHeat += 0.3}px`
-                    blueStick.style.height = `${increaseCool += 0.3}px`
-                } else {
-                    redStick.style.height = `${increaseHeat -= 0.3}px`
-                    blueStick.style.height = `${increaseCool -= 0.3}px`
-                }
-                previous = value;
-            })
+
+        // const boxs = document.querySelectorAll('.box')
+        // const range1 = document.querySelector('#cowbell1')
+        // const range2 = document.querySelector('#cowbell2')
+        // let previous = 0;
+        // range1.oninput = (() => {
+        // let value = range1.value;
+        // boxs[0].style.height = `${value}px`;
+        // boxs[1].style.height = `${value}px`;
+        // boxs[2].style.height = `${value}px`;
+        // boxs[3].style.height = `${value}px`;
+        // if (value > previous){
+        //     redStick.style.height = `${increaseHeat += 0.3}px`
+        //     blueStick.style.height = `${increaseCool += 0.3}px`
+        // } else {
+        //     redStick.style.height = `${increaseHeat -= 0.3}px`
+        //     blueStick.style.height = `${increaseCool -= 0.3}px`
+        // }
+        // previous = value;
+        // })
             // 0 = front, 1 = right, 2 = back, 3 = left
             // let left = -400;
             // let right = 0;
