@@ -57,7 +57,7 @@ def get_plots():
             figure2_traces.append(cooling["data"][trace])
 
         #Create a 1x2 subplot
-        fig = sp.make_subplots(rows=1, cols=2,  subplot_titles=(labels[i] + ' Effect on Heating Loasd',  labels[i] + ' Effect on Cooling Load'))
+        fig = sp.make_subplots(rows=1, cols=2,  subplot_titles=(labels[i] + ' Effect on Heating Load',  labels[i] + ' Effect on Cooling Load'))
         fig['layout']['xaxis']['title']=labels[i]
         fig['layout']['xaxis2']['title']=labels[i]
         fig['layout']['yaxis']['title']='Heating Efficiency'
@@ -71,7 +71,7 @@ def get_plots():
             fig.append_trace(traces, row=1, col=2)
 
         fig.update_traces(marker=dict(size=5,
-                                    opacity=0.5,
+                                    opacity=0.2,
                                 ),
                     selector=dict(mode='markers'))
 
