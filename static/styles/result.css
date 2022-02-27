@@ -1,13 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap");
+
 * {
   border: border-box;
   margin: 0;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
+  position: relative;
+  padding-top: 10px;
+}
+main {
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: row;
 }
+
+
+/* navbar */
+.nav-bar {
+  width: 60vw;
+  background-color: #188aec;
+  margin: 0 auto;
+  padding: 10px 20px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.icon-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.icon-bar img {
+  margin-right: 10px;
+}
+.icon-bar div {
+  margin-top: 10px;
+}
+
+.icon--text {
+  font-style: normal;
+  font-weight: 800;
+  font-size: 36px;
+  line-height: 54px;
+  letter-spacing: -0.025em;
+
+  /* Dark */
+
+  color: #282d46;
+}
+
+.lists {
+  display: flex;
+  align-items: center;
+}
+
+.nav--link{
+    text-decoration: none;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17.1676px;
+    line-height: 138.5%;
+    /* or 24px */
+
+    letter-spacing: 0.035em;
+    margin: 10px;
+    border-bottom: 3px solid black;
+    color: black;
+}
+.nav--link:hover{
+    color: white;
+}
+
+/* navbar */
+
 
 .graph-container {
   width: 400px;
@@ -58,7 +130,8 @@ li {
   justify-content: flex-end;
   align-items: center;
 }
-.number--red, .number--blue {
+.number--red,
+.number--blue {
   margin: 5px;
   font-size: 12px;
   line-height: 140%;
@@ -72,19 +145,116 @@ li {
 .title {
   position: absolute;
   top: -10%;
-  left: 10%;
-  width: 67px;
+  left: -1%;
+  width: 82px;
   height: 20px;
   font-weight: 800;
   font-size: 12px;
   line-height: 140%;
   color: #000000;
+}
+.cooling-load-plate .title {
+  border-bottom: 3px solid #0088f0;
+}
 
-}
-.cooling-load-plate .title{
-  border-bottom: 3px solid #0088F0;
+.heating-load-plate .title {
+  border-bottom: 3px solid #ef2a82;
 }
 
-.heating-load-plate .title{
-  border-bottom: 3px solid #EF2A82;
+/* left */
+.text {
+  width: 30%;
+  height: 410px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
+
+.text p {
+  font-size: 18px;
+  line-height: 150%;
+  /* or 27px */
+
+  /* text / secondary */
+
+  color: #8794ba;
+}
+
+a button {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 179.5%;
+  /* or 25px */
+
+  letter-spacing: 0.03em;
+
+  color: #ffffff;
+  width: 160px;
+  height: 41px;
+
+  background: #32597a;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+}
+
+/* 3d */
+
+
+#wrapper {
+            position: absolute;
+            left: 50%;
+            top: 40%;
+            perspective: 1500px;
+        }
+
+        .box-area {
+            position: relative;
+            transform-style: preserve-3d;
+            animation-name: rotate;
+            animation-duration: 30s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+       @keyframes rotate {
+        0% {
+            transform: rotate3d(0, 0, 0, 0);
+        }
+        100% {
+            transform: rotate3d(0, 1, 0, 360deg);
+            ;
+        }
+        }
+
+
+        .box {
+            position: absolute;
+              width: 400px;
+              height: 100px;
+              border-radius: 10px;
+
+        }
+
+        #box-front {
+            transform: translateX(-200px) translateY(-200px) translateZ(200px);
+            background: rgba(16, 128, 255, 0.5);
+        }
+
+        #box-back {
+            transform: translateX(-200px) translateY(-200px) translateZ(-200px);
+            background: rgba(137, 168, 177, 0.616);
+        }
+
+        #box-right {
+            transform: translateY(-200px) rotateY(90deg);
+            background: rgba(34, 73, 117, 0.603);
+        }
+
+        #box-left {
+            transform: translateY(-200px) translateX(-400px) rotateY(90deg);
+            background: rgba(67, 173, 165, 0.5);
+        }
+        .box-area {
+            transform: rotateX(90deg) rotateY(90deg) rotateZ(90deg);
+        }

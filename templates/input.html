@@ -17,6 +17,16 @@
     <title>Input</title>
 </head>
 <body>
+    <div class="navbar">
+        <div class="icon-bar">
+            <img src="{{ url_for('static',filename='img/logo2.png') }}" alt="">
+            <div><h1 class="icon--text">CONSTRUCT</h1></div>
+        </div>
+        <div class="lists">
+            <a href="/show_graph" class="nav-link"><li class="nav-items">Show-Data</li></a>
+            <a href="/input" class="nav-link"><li class="nav-items">Calculations</li></a>
+        </div>
+    </div>
     <main>
         <h1>Design your building</h1>
         <p>Adjust the values in the fields below to create a building design, then calculate the estimated energy efficiency!</p>

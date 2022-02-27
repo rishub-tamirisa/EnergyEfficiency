@@ -5,9 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/styles/graphs.css">
+    <link rel="stylesheet" href="../static/styles/graphs.css">
     <title>Graphs</title>
 </head>
 <body>
+    <div class="nav-bar">
+        <div class="icon-bar">
+            <img src="{{ url_for('static',filename='img/logo2.png') }}" alt="">
+            <div>
+                <h1 class="icon--text">CONSTRUCT</h1>
+            </div>
+        </div>
+        <div class="lists">
+            <a href="/" class="nav--link">
+                Home
+            </a>
+            <a href="/input" class="nav--link">
+                Calculations
+            </a>
+        </div>
+    </div>
     <h1>The Effects of Individual Attributes on Heating and Cooling Load</h1>
         <div class="all--graphs">
             {{graph_1 | safe}}

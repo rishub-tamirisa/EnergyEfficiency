@@ -8,11 +8,48 @@
 
     <link rel="stylesheet" href="../static/styles/result.css">
 
-    <title>Document</title>
+    <title>Show Case!</title>
 </head>
 <body>
+    <div class="nav-bar">
+        <div class="icon-bar">
+            <img src="{{ url_for('static',filename='img/logo2.png') }}" alt="">
+            <div>
+                <h1 class="icon--text">CONSTRUCT</h1>
+            </div>
+        </div>
+        <div class="lists">
+            <a href="/show_graph" class="nav--link">
+                Show-Data
+            </a>
+            <a href="/input" class="nav--link">
+                Calculations
+            </a>
+        </div>
+    </div>
+
+    <div id="wrapper">
+        <div class="box-area">
+            <div id="box-front" class="box"></div>
+            <div id="box-right" class="box"></div>
+            <div id="box-back" class="box"></div>
+            <div id="box-left" class="box"></div>
+            <div id="box-top" class="box"></div>
+            <div id="box-bottom" class="box"></div>
+        </div>
+    </div>
+
     <main>
-        <div class="first graph-container">
+        <div class="text">
+            <div class="handle-button">
+                <a href="/input"><button>Try another inputs!</button></a>
+            </div>
+            <h1>Heating load & Cooling load</h1>
+            <p>A heating load and a cooling load are measurements of how much heat is required per hour to maintan a desired temprerature.</p>
+            <p>The more heat is required the more energy.</p>
+        </div>
+
+        <div class="graph-container">
             <div class="first range">
                 <li>40-50</li>
                 <li>30-40</li>
