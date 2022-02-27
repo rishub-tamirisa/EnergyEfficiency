@@ -1,1 +1,1 @@
-wed: gunicorn app:app
+wed: gunicorn app:run_app

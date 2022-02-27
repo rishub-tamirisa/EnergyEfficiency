@@ -90,3 +90,8 @@ def get_graph():
 #     graph_6 = graphs[5]
 #     graph_7 = graphs[6]
 #     graph_8 = graphs[7]
+
+app = Flask(__name__)
+
+def run_app():
+    app.run()
